@@ -70,94 +70,78 @@ function UserModal({
   return (
     <div className={`${styles.modalOverlay} ${animationClass}`} data-testid="modal-overlay">
       <div className={styles.modalContent} ref={modalRef} data-testid="modal-content">
-        <div className={styles.modalHeader}>
-          <h2 className={styles.modalTitle}>{user.name}</h2>
-          <button
-            className={styles.closeButton}
-            onClick={handleClose}
-            aria-label="Close modal"
-          >
-            ✕
-          </button>
-        </div>
+        <button
+          className={styles.closeButton}
+          onClick={handleClose}
+          aria-label="Close modal"
+        >
+          ✕
+        </button>
 
         <div className={styles.modalBody}>
-          <div className={styles.userInfoSection}>
-            <h3 className={styles.sectionTitle}>Personal Information</h3>
-            <div className={styles.infoGrid}>
-              <div className={styles.infoItem}>
-                <div className={styles.infoLabel}>Username</div>
-                <div className={styles.infoValue}>{user.username}</div>
-              </div>
-              <div className={styles.infoItem}>
-                <div className={styles.infoLabel}>Email</div>
-                <div className={styles.infoValue}>{user.email}</div>
-              </div>
-              <div className={styles.infoItem}>
-                <div className={styles.infoLabel}>Phone</div>
-                <div className={styles.infoValue}>{user.phone}</div>
-              </div>
-              <div className={styles.infoItem}>
-                <div className={styles.infoLabel}>Website</div>
-                <div className={styles.infoValue}>{user.website}</div>
-              </div>
-            </div>
+          {/* Header with Name and Email */}
+          <div className={styles.userHeader}>
+            <h2 className={styles.userName}>{user.name}</h2>
+            <a href={`mailto:${user.email}`} className={styles.userEmail}>{user.email}</a>
           </div>
 
-          <div className={styles.userInfoSection}>
+          {/* Address Section */}
+          <div className={styles.section}>
             <h3 className={styles.sectionTitle}>Address</h3>
-            <div className={styles.infoGrid}>
-              <div className={styles.infoItem}>
-                <div className={styles.infoLabel}>Street</div>
-                <div className={styles.infoValue}>{user.address.street}</div>
+            <div className={styles.addressContent}>
+              <p>{user.address.suite}, {user.address.street}</p>
+              <p>{user.address.city}, {user.address.zipcode}</p>
+              <p className={styles.mapLinkContainer}>
+                <span className={styles.mapIcon}>📍</span>
+                <a
+                  href={getMapUrl(user.address.geo.lat, user.address.geo.lng)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.mapLink}
+                >
+                  View on map
+                </a>
+              </p>
+            </div>
+          </div>
+
+          {/* Contact Section */}
+          <div className={styles.section}>
+            <h3 className={styles.sectionTitle}>Contact</h3>
+            <div className={styles.contactContent}>
+              <div className={styles.contactItem}>
+                <span className={styles.contactLabel}>Phone:</span>
+                <span>{user.phone}</span>
               </div>
-              <div className={styles.infoItem}>
-                <div className={styles.infoLabel}>Suite</div>
-                <div className={styles.infoValue}>{user.address.suite}</div>
-              </div>
-              <div className={styles.infoItem}>
-                <div className={styles.infoLabel}>City</div>
-                <div className={styles.infoValue}>{user.address.city}</div>
-              </div>
-              <div className={styles.infoItem}>
-                <div className={styles.infoLabel}>Zipcode</div>
-                <div className={styles.infoValue}>{user.address.zipcode}</div>
-              </div>
-              <div className={styles.infoItem}>
-                <div className={styles.infoLabel}>Location</div>
-                <div className={styles.infoValue}>
-                  <div>
-                    Lat: {user.address.geo.lat}, Lng: {user.address.geo.lng}
-                  </div>
-                  <a
-                    href={getMapUrl(user.address.geo.lat, user.address.geo.lng)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.mapLink}
-                  >
-                    View on map
-                  </a>
-                </div>
+              <div className={styles.contactItem}>
+                <span className={styles.contactLabel}>Website:</span>
+                <a 
+                  href={`https://${user.website}`} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className={styles.websiteLink}
+                >
+                  {user.website}
+                </a>
               </div>
             </div>
           </div>
 
-          <div className={styles.userInfoSection}>
+          {/* Company Section */}
+          <div className={styles.section}>
             <h3 className={styles.sectionTitle}>Company</h3>
-            <div className={styles.infoGrid}>
-              <div className={styles.infoItem}>
-                <div className={styles.infoLabel}>Name</div>
-                <div className={styles.infoValue}>{user.company.name}</div>
+            <div className={styles.companyContent}>
+              <div className={styles.companyItem}>
+                <span className={styles.companyLabel}>Name:</span>
+                <span>{user.company.name}</span>
               </div>
-              <div className={styles.infoItem}>
-                <div className={styles.infoLabel}>Catch Phrase</div>
-                <div className={styles.infoValue}>
-                  {user.company.catchPhrase}
-                </div>
+              <div className={styles.companyItem}>
+                <span className={styles.companyLabel}>Catchphrase:</span>
+                <span>{user.company.catchPhrase}</span>
               </div>
-              <div className={styles.infoItem}>
-                <div className={styles.infoLabel}>Business</div>
-                <div className={styles.infoValue}>{user.company.bs}</div>
+              <div className={styles.companyItem}>
+                <span className={styles.companyLabel}>Business:</span>
+                <span>{user.company.bs}</span>
               </div>
             </div>
           </div>

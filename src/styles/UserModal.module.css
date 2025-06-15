@@ -24,7 +24,7 @@
   background-color: white;
   border-radius: 8px;
   width: 100%;
-  max-width: 600px;
+  max-width: 500px;
   max-height: 90vh;
   overflow-y: auto;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
@@ -32,6 +32,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   scrollbar-width: thin;
   scrollbar-color: #cbd5e1 #f1f5f9;
+  position: relative;
 }
 
 .modalContent::-webkit-scrollbar {
@@ -57,25 +58,6 @@
   transform: translateY(0);
 }
 
-.modalHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.25rem;
-  border-bottom: 1px solid #e5e7eb;
-  background-color: #f9fafb;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.modalTitle {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #111827;
-  margin: 0;
-}
-
 .closeButton {
   background: none;
   border: none;
@@ -88,6 +70,10 @@
   justify-content: center;
   border-radius: 50%;
   transition: background-color 0.2s ease;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 20;
 }
 
 .closeButton:hover {
@@ -96,66 +82,137 @@
 }
 
 .modalBody {
-  padding: 1.25rem;
+  padding: 1.5rem;
 }
 
-.userInfoSection {
+/* User Header */
+.userHeader {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  width: calc(100% + 3rem);
+  margin-left: -1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.userName {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 0.5rem 0;
+}
+
+.userEmail {
+  color: #4285f4;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.userEmail:hover {
+  text-decoration: underline;
+}
+
+/* Section Styling */
+.section {
   margin-bottom: 1.5rem;
 }
 
 .sectionTitle {
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: 600;
-  color: #374151;
-  margin-bottom: 0.75rem;
-  border-bottom: 1px solid #e5e7eb;
-  padding-bottom: 0.5rem;
-}
-
-.infoGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-}
-
-.infoItem {
-  margin-bottom: 0.75rem;
-}
-
-.infoLabel {
-  font-size: 0.875rem;
-  color: #6b7280;
-  margin-bottom: 0.25rem;
-}
-
-.infoValue {
   color: #111827;
-  word-break: break-word;
-  transition: color 0.2s ease;
+  margin: 0 0 0.75rem 0;
 }
 
-.infoItem:hover .infoValue {
-  color: #2563eb;
+/* Address Section */
+.addressContent p {
+  margin: 0.25rem 0;
+  color: #374151;
+}
+
+.mapLinkContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.mapIcon {
+  margin-right: 0.5rem;
+  color: #ef4444;
 }
 
 .mapLink {
-  display: inline-block;
-  color: #2563eb;
+  color: #4285f4;
   text-decoration: none;
-  transition: color 0.2s ease;
 }
 
 .mapLink:hover {
-  color: #1d4ed8;
   text-decoration: underline;
 }
 
-@media (max-width: 640px) {
-  .infoGrid {
-    grid-template-columns: 1fr;
-  }
+/* Contact Section */
+.contactContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
 
+.contactItem {
+  display: flex;
+  align-items: baseline;
+  color: #6b7280;
+}
+
+.contactLabel {
+  font-weight: 600;
+  color: #6b7280;
+  width: 5rem;
+  flex-shrink: 0;
+}
+
+.websiteLink {
+  color: #4285f4;
+  text-decoration: none;
+}
+
+.websiteLink:hover {
+  text-decoration: underline;
+}
+
+/* Company Section */
+.companyContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.companyItem {
+  display: flex;
+  align-items: baseline;
+  color: #6b7280;
+}
+
+.companyLabel {
+  font-weight: 600;
+  color: #6b7280;
+  width: 7rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
   .modalContent {
     max-height: 80vh;
+  }
+
+  .contactItem,
+  .companyItem {
+    flex-direction: column;
+  }
+
+  .contactLabel,
+  .companyLabel {
+    width: 100%;
+    margin-bottom: 0.25rem;
   }
 }
