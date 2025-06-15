@@ -68,8 +68,8 @@ function UserModal({
   };
 
   return (
-    <div className={`${styles.modalOverlay} ${animationClass}`}>
-      <div className={styles.modalContent} ref={modalRef}>
+    <div className={`${styles.modalOverlay} ${animationClass}`} data-testid="modal-overlay">
+      <div className={styles.modalContent} ref={modalRef} data-testid="modal-content">
         <div className={styles.modalHeader}>
           <h2 className={styles.modalTitle}>{user.name}</h2>
           <button
