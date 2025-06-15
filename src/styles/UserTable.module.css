@@ -1,0 +1,140 @@
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  background-color: white;
+  transition: box-shadow 0.3s ease;
+}
+
+.tableContainer:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.tableHeader {
+  background-color: #f9fafb;
+  text-align: left;
+  font-weight: 600;
+  color: #374151;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.tableHeader th {
+  padding: 1rem;
+  white-space: nowrap;
+}
+
+.tableRow {
+  border-bottom: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
+}
+
+.tableRow:hover {
+  background-color: #f3f4f6;
+  cursor: pointer;
+  transform: translateY(-1px);
+}
+
+.deletingRow {
+  opacity: 0.5;
+  background-color: #fee2e2;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.tableRow:last-child {
+  border-bottom: none;
+}
+
+.tableCell {
+  padding: 1rem;
+  color: #4b5563;
+  transition: color 0.2s ease;
+}
+
+.tableRow:hover .tableCell {
+  color: #111827;
+}
+
+.emailText {
+  display: block;
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+.websiteText {
+  color: #2563eb;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.websiteText:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+.actionButton {
+  background: none;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.actionButton:hover {
+  background-color: #fee2e2;
+}
+
+.actionButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.deletingButton {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.actionCell {
+  text-align: center;
+  width: 80px;
+}
+
+@media (max-width: 768px) {
+  .tableContainer {
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0 -1rem;
+  }
+  
+  .tableHeader th:not(:first-child):not(:last-child) {
+    display: none;
+  }
+  
+  .tableCell:not(:first-child):not(:last-child) {
+    display: none;
+  }
+}
